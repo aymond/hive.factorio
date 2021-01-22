@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: factorio-server
+  namespace: factorio
+  labels:
+    app: factorio-server
+spec:
+  strategy:
+    type: Recreate  
+  selector:
+    matchLabels:
+      app: factorio-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: factorio-server
+    spec:    
+      containers:
+        - image: aymon/factorio:latest
+          imagePullPolicy: Always
+          name: factorio-server
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 10m
+            limits:
+              memory: 256Mi
+              cpu: "1"          
+          volumeMounts:
+            - name: factorio-data
+              mountPath: /factorio
+      nodeSelector:
+        cpu: i5
+      volumes:
+        - name: factorio-data
+          persistentVolumeClaim:
+            claimName:  factorio-data
+          

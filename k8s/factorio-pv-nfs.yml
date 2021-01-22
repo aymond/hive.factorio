@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: factorio-nfs
+  labels:
+    app: factorio-nfs
+spec:
+  capacity:
+    storage: 0.5Gi
+  storageClassName: standard
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: server
+    path: path
