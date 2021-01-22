@@ -2,11 +2,11 @@
 
 Setting up factorio to run on Kubernetes cluster. Uses the factorio-docker from factoriotools, but adjusts some shell scripts to work on kubernetes.
 
-Read data path: /opt/factorio/data
+Read data path in the container: /opt/factorio/data
 
-Write data path: /factorio
+Write data path mounted on a persistent volume: /factorio
 
-Binaries path: /opt/factorio/bin
+Binaries path fixed in the container: /opt/factorio/bin
 
 
 ## Original Author
