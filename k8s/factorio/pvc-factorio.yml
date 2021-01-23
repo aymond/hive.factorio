@@ -3,6 +3,14 @@ apiVersion: v1
 metadata:
   name: factorio-data
   namespace: factorio
+  labels:
+    app: factorio-server
+    app.kubernetes.io/name: factorio-server
+    app.kubernetes.io/instance: factorio-000
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/component: gameserver
+    app.kubernetes.io/part-of: factorio-server
+    app.kubernetes.io/managed-by: manual
 spec:
   accessModes:
   - ReadWriteMany

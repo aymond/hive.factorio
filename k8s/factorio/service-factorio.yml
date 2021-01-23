@@ -3,6 +3,14 @@ kind: Service
 metadata:
   name: factorio-server-udp
   namespace: factorio
+  labels:
+    app: factorio-server
+    app.kubernetes.io/name: factorio-server
+    app.kubernetes.io/instance: factorio-000
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/component: gameserver
+    app.kubernetes.io/part-of: factorio-server
+    app.kubernetes.io/managed-by: manual
 spec:
   type: LoadBalancer
   ports:
@@ -17,6 +25,14 @@ kind: Service
 metadata:
   name: factorio-server-tcp
   namespace: factorio
+  labels:
+    app: factorio-server
+    app.kubernetes.io/name: factorio-server
+    app.kubernetes.io/instance: factorio-000
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/component: gameserver
+    app.kubernetes.io/part-of: factorio-server
+    app.kubernetes.io/managed-by: manual
 spec:
   type: LoadBalancer
   ports:

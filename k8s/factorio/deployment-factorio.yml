@@ -5,6 +5,12 @@ metadata:
   namespace: factorio
   labels:
     app: factorio-server
+    app.kubernetes.io/name: factorio-server
+    app.kubernetes.io/instance: factorio-000
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/component: gameserver
+    app.kubernetes.io/part-of: factorio-server
+    app.kubernetes.io/managed-by: manual
 spec:
   strategy:
     type: Recreate  
@@ -21,6 +27,16 @@ spec:
         - image: aymon/factorio:latest
           imagePullPolicy: Always
           name: factorio-server
+          readinessProbe:
+            tcpSocket:
+              port: 27015
+            initialDelaySeconds: 5
+            periodSeconds: 10      
+          livenessProbe:
+            tcpSocket:
+              port: 27015
+            initialDelaySeconds: 15
+            periodSeconds: 20
           resources:
             requests:
               memory: 128Mi
@@ -31,10 +47,18 @@ spec:
           volumeMounts:
             - name: factorio-data
               mountPath: /factorio
+            - name: factorio-server-config
+              mountPath: /opt/factorio/config
       nodeSelector:
         cpu: i5
       volumes:
         - name: factorio-data
           persistentVolumeClaim:
             claimName:  factorio-data
+        - name: factorio-server-config
+          configMap:
+            name: factorio-server-config
+            items:
+              - key: config.ini
+                path: config.ini
           
