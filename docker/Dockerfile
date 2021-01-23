@@ -26,7 +26,7 @@ SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 RUN set -ox pipefail \
     && archive="/tmp/factorio_headless_x64_$VERSION.tar.xz" \
     && mkdir -p /opt ${WRITEFOLDER} \
-    && apk add --update --no-cache --no-progress bash binutils curl file gettext jq libintl pwgen shadow su-exec tree \
+    && apk add --update --no-cache --no-progress bash binutils curl file gettext jq libintl pwgen shadow su-exec \
     && curl -sSL "https://www.factorio.com/get-download/$VERSION/headless/linux64" -o "$archive" \
     && echo "$SHA1  $archive" | sha1sum -c \
     || (sha1sum "$archive" && file "$archive" && exit 1) \
@@ -41,10 +41,6 @@ RUN set -ox pipefail \
     && chown -R "$USER":"$GROUP" /opt/factorio ${WRITEFOLDER}
 
 COPY files/*.sh /
-COPY files/config.ini /opt/factorio/config/config.ini
-
-RUN set -ox pipefail \
-    && sed -i '/write-data=/c\write-data=\'"${WRITEFOLDER}"'/' /opt/factorio/config/config.ini
 
 VOLUME ["${WRITEFOLDER}"]
 EXPOSE $PORT/udp $RCON_PORT/tcp
