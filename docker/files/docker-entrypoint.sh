@@ -8,17 +8,19 @@ SAVE_NAME="${SAVE_NAME:-""}"
 RUNASUSER=factorio
 RUNASGROUP=factorio
 
-whoami
-ls -al "$FACTORIO_VOL"
-cat /etc/passwd | grep factorio
-cat /etc/groups | grep factorio
-
 mkdir -p "$FACTORIO_VOL"
 mkdir -p "$SAVES"
 mkdir -p "$CONFIG"
 mkdir -p "$MODS"
 mkdir -p "$SCENARIOS"
 mkdir -p "$SCRIPTOUTPUT"
+
+whoami
+ls -al "${FACTORIO_VOL}"
+cat /etc/passwd | grep factorio
+cat /etc/group | grep factorio
+touch "${FACTORIO_VOL}"/test.txt 
+ls -al "${FACTORIO_VOL}"
 
 if [[ ! -f $CONFIG/rconpw ]]; then
   # Generate a new RCON password if none exists
