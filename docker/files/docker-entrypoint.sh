@@ -42,7 +42,7 @@ fi
 
 if [[ $(id -u) = 0 ]]; then
   # Drop to the factorio user
-  SU_EXEC="su-exec ${RUNASUSER}:${RUNASGROUP}"
+  SU_EXEC="su-exec ${RUNASUSER}"
 else
   SU_EXEC=""
 fi
