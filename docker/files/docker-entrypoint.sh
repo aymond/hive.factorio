@@ -61,6 +61,7 @@ if [[ $GENERATE_NEW_SAVE == true ]]; then
     if [[ -f "$SAVES/$SAVE_NAME.zip" ]]; then
         echo "Map $SAVES/$SAVE_NAME.zip already exists, skipping map generation"
     else
+        ls -al "${SAVES}"
         $SU_EXEC /opt/factorio/bin/x64/factorio \
             --create "$SAVES/$SAVE_NAME.zip" \
             --map-gen-settings "$CONFIG/map-gen-settings.json" \
