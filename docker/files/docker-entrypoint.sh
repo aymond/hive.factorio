@@ -1,6 +1,7 @@
 #!/bin/bash
 set -eoux pipefail
 
+ENV
 FACTORIO_VOL=/factorio
 LOAD_LATEST_SAVE="${LOAD_LATEST_SAVE:-true}"
 GENERATE_NEW_SAVE="${GENERATE_NEW_SAVE:-false}"

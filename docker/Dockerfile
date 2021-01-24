@@ -8,6 +8,7 @@ ARG GROUP=factorio
 ARG PUID=1000
 ARG PGID=1000
 ARG WRITEFOLDER=/factorio
+ARG DEBUG=TRUE
 
 ENV PORT=34197 \
     RCON_PORT=27015 \
@@ -20,7 +21,8 @@ ENV PORT=34197 \
     SCENARIOS=${WRITEFOLDER}/scenarios \
     SCRIPTOUTPUT=${WRITEFOLDER}/script-output \
     PUID="$PUID" \
-    PGID="$PGID"
+    PGID="$PGID" \
+    DEBUG=${DEBUG}}
 
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 RUN set -ox pipefail \
