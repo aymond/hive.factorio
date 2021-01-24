@@ -78,10 +78,12 @@ if [[ $GENERATE_NEW_SAVE == true ]]; then
         ls -al "${SAVES}"
         touch "${CONFIG}"/config-test.txt  
         ls -al "${CONFIG}"
-        $SU_EXEC /opt/factorio/bin/x64/factorio \
+        #$SU_EXEC /opt/factorio/bin/x64/factorio \
+        /opt/factorio/bin/x64/factorio \
             --create "$SAVES/$SAVE_NAME.zip" \
             --map-gen-settings "$CONFIG/map-gen-settings.json" \
             --map-settings "$CONFIG/map-settings.json"
+        ls -al "${SAVES}"
     fi
 fi
 
