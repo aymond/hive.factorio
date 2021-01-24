@@ -8,6 +8,11 @@ SAVE_NAME="${SAVE_NAME:-""}"
 RUNASUSER=factorio
 RUNASGROUP=factorio
 
+whoami
+ls -al "$FACTORIO_VOL"
+cat /etc/passwd | grep factorio
+cat /etc/groups | grep factorio
+
 mkdir -p "$FACTORIO_VOL"
 mkdir -p "$SAVES"
 mkdir -p "$CONFIG"
