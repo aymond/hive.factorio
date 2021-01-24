@@ -41,6 +41,7 @@ RUN set -ox pipefail \
     && chown -R "$USER":"$GROUP" /opt/factorio ${WRITEFOLDER}
 
 COPY files/*.sh /
+RUN ["chmod", "+x", "/docker-entrypoint.sh"]
 
 VOLUME ["${WRITEFOLDER}"]
 EXPOSE $PORT/udp $RCON_PORT/tcp
