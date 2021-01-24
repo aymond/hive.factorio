@@ -22,6 +22,13 @@ cat /etc/group | grep factorio
 touch "${FACTORIO_VOL}"/test.txt 
 ls -al "${FACTORIO_VOL}"
 
+if [[ $(id -u) = 0 ]]; then
+  # Take ownership of factorio data if running as root
+  chown -R ${RUNASUSER}:${RUNASGROUP} "$FACTORIO_VOL"
+fi
+
+ls -al "${FACTORIO_VOL}"
+
 if [[ ! -f $CONFIG/rconpw ]]; then
   # Generate a new RCON password if none exists
   pwgen 15 1 >"$CONFIG/rconpw"
