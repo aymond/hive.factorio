@@ -29,6 +29,8 @@ fi
 
 ls -al "${FACTORIO_VOL}"
 
+ls -al /opt/factorio
+
 if [[ ! -f $CONFIG/rconpw ]]; then
   # Generate a new RCON password if none exists
   pwgen 15 1 >"$CONFIG/rconpw"
