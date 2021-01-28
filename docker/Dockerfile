@@ -12,8 +12,7 @@ ARG DEBUG=TRUE
 
 ENV PORT=34197 \
     RCON_PORT=27015 \
-    VERSION=1.0.0 \
-    SHA1=a50dd6f1ab17acde5a8d77bc5fb478c798d9c20e \
+    VERSION=stable \
     WRITEFOLDER="${WRITEFOLDER}" \
     SAVES=${WRITEFOLDER}/saves \
     CONFIG=${WRITEFOLDER}/config \
@@ -30,8 +29,6 @@ RUN set -ox pipefail \
     && mkdir -p /opt ${WRITEFOLDER} \
     && apk add --update --no-cache --no-progress bash binutils curl file gettext jq libintl pwgen shadow su-exec \
     && curl -sSL "https://www.factorio.com/get-download/$VERSION/headless/linux64" -o "$archive" \
-    && echo "$SHA1  $archive" | sha1sum -c \
-    || (sha1sum "$archive" && file "$archive" && exit 1) \
     && tar xf "$archive" --directory /opt \
     && chmod ugo=rwx /opt/factorio \
     && rm "$archive" \
