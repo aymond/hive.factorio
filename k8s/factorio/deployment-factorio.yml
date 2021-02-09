@@ -24,7 +24,7 @@ spec:
         app: factorio-server
     spec:    
       containers:
-        - image: aymon/factorio:latest
+        - image: aymon/factorio:1.1.21
           imagePullPolicy: Always
           name: factorio-server
           readinessProbe:
