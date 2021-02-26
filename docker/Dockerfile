@@ -28,7 +28,7 @@ RUN set -ox pipefail \
     && archive="/tmp/factorio_headless_x64_$VERSION.tar.xz" \
     && mkdir -p /opt ${WRITEFOLDER} \
     && apk add --update --no-cache --no-progress bash binutils curl file gettext jq libintl pwgen shadow su-exec \
-    && curl -sSL "https://www.factorio.com/get-download/1.1.21/headless/linux64" -o "$archive" \
+    && curl -sSL "https://www.factorio.com/get-download/1.1.25/headless/linux64" -o "$archive" \
     && tar xf "$archive" --directory /opt \
     && chmod ugo=rwx /opt/factorio \
     && rm "$archive" \
